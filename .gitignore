@@ -16,6 +16,7 @@ build
 
 # expo
 .expo
+.turbo
 
 # misc
 .DS_Store
