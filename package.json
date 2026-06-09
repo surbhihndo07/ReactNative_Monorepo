@@ -1,8 +1,13 @@
 {
   "private": true,
   "scripts": {
-    "dev": "turbo run dev",
-    "build": "turbo run build",
+    "dev": "node scripts/set-env.js dev && turbo run dev",
+    "dev:qa": "node scripts/set-env.js qa && turbo run dev",
+    "dev:prod": "node scripts/set-env.js prod && turbo run dev",
+    "build": "node scripts/set-env.js prod && turbo run build",
+    "env:dev": "node scripts/set-env.js dev",
+    "env:qa": "node scripts/set-env.js qa",
+    "env:prod": "node scripts/set-env.js prod",
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\" --ignore-path .gitignore"
   },
