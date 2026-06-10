@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { Button } from "@repo/ui";
-import { post } from "@repo/shared";
+import { apiService, getApiBaseUrl } from "@repo/shared";
 
 export default function Native() {
   return (
@@ -12,8 +12,9 @@ export default function Native() {
           (async () => {
             try {
               const payload = { title: "Hello from native", body: "Test post" };
-              const res = await post("https://jsonplaceholder.typicode.com/posts", payload);
+              const res = await apiService.post("/posts", payload);
               console.log("Post response", res);
+              console.log("API base URL", getApiBaseUrl());
               alert("Post successful: " + JSON.stringify(res));
             } catch (err) {
               console.error(err);

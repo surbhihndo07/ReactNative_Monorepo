@@ -1,7 +1,7 @@
 "use client";
 
+import { apiService, getApiBaseUrl } from "@repo/shared";
 import { Button } from "@repo/ui";
-import { post } from "@repo/shared";
 
 import styles from "../styles/index.module.css";
 
@@ -9,8 +9,9 @@ export default function Web() {
   const handlePost = async () => {
     try {
       const payload = { title: "Hello from web", body: "Sample post" };
-      const response = await post("https://jsonplaceholder.typicode.com/posts", payload);
+      const response = await apiService.post("/posts", payload);
       console.log("Web post response", response);
+      console.log("API base URL", getApiBaseUrl());
       alert("Post successful: " + JSON.stringify(response));
     } catch (error) {
       console.error(error);
